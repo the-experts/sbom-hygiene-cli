@@ -33,11 +33,6 @@ replay_pid*
 
 # Maven / build artifacts
 target/
-*.class
-*.log
-*.jar
-*.war
-*.ear
 
 # OS
 .DS_Store
