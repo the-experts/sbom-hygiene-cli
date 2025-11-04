@@ -35,14 +35,7 @@ public class RunCommand implements Runnable {
             // Expand leading '~' to user home
             String expanded = sbomPath;
             boolean usedTilde = sbomPath.startsWith("~");
-            if (expanded.startsWith("~")) {
-                String userHome = System.getProperty("user.home");
-                if (expanded.equals("~")) {
-                    expanded = userHome;
-                } else if (expanded.startsWith("~/") || expanded.startsWith("~" + File.separator)) {
-                    expanded = userHome + expanded.substring(1);
-                }
-            }
+            expanded = getExpandedPath(expanded);
 
             // Determine base directory only when appropriate:
             // - If the user used a leading '~' we consider this an explicit local path and resolve relative paths against the process CWD.
@@ -86,6 +79,18 @@ public class RunCommand implements Runnable {
         // TODO: Send SBOM to parser
         // TODO: Accept standard format back from parser
         // TODO: call processor logic here
+    }
+
+    private static String getExpandedPath(String expanded) {
+        if (expanded.startsWith("~")) {
+            String userHome = System.getProperty("user.home");
+            if (expanded.equals("~")) {
+                expanded = userHome;
+            } else if (expanded.startsWith("~/") || expanded.startsWith("~" + File.separator)) {
+                expanded = userHome + expanded.substring(1);
+            }
+        }
+        return expanded;
     }
 
     /**
