@@ -1,0 +1,94 @@
+{
+  "rules": {
+    "no-recent-commit": {
+      "warn-at-months": 12,
+      "fail-at-months": 18
+    },
+    "few-yearly-commits": {
+      "warn-at-count": 2,
+      "fail-at-count": null
+    },
+    "no-recent-package-release": {
+      "warn-at-months": 18,
+      "fail-at-months": 24
+    },
+    "repository-archived": {
+      "fail": true
+    },
+    "repository-is-fork": {
+      "warn": true
+    },
+    "package-deprecated": {
+      "fail": true
+    },
+    "single-recent-author": {
+      "warn": true
+    },
+    "repository-not-identified": {
+      "warn": true
+    },
+    "repository-not-found": {
+      "warn": true
+    },
+    "issue-lead-time-bugs": {
+      "metric": "issue-lead-time",
+      "type": ["bug"],
+      "exclude-labels": ["security", "vulnerability"],
+      "aggregation": "median",
+      "min-closed-issues": 5,
+      "warn-at-days": 100,
+      "fail-at-days": 365
+    },
+    "issue-lead-time-security-bugs": {
+      "metric": "issue-lead-time",
+      "type": ["bug"],
+      "include-labels": ["security", "vulnerability"],
+      "aggregation": "median",
+      "min-closed-issues": 5,
+      "warn-at-days": 14,
+      "fail-at-days": 28
+    },
+    "github-stars": {
+          "metric": "stars",
+          "warn-at": 50,
+          "fail-at": 10,
+          "description": "Aantal GitHub-sterren als proxy voor adoptie en zichtbare community-interesse."
+        },
+        "github-forks": {
+          "metric": "forks",
+          "warn-at": 10,
+          "fail-at": 2,
+          "description": "Aantal forks als indicatie van hergebruik en externe bijdragebereidheid."
+        },
+        "github-watchers": {
+          "metric": "watchers",
+          "warn-at": 10,
+          "fail-at": 1,
+          "description": "Aantal watchers/abonnees als signaal van betrokken volgers."
+        },
+        "package-downloads": {
+          "metric": "downloads-per-month",
+          "warn-at": 1000,
+          "fail-at": 100,
+          "description": "Maandelijkse downloads uit de relevante registry (bijv. PyPI/npm/Maven). Lage aantallen duiden op beperkte adoptie."
+        },
+        "initial-commit-age": {
+          "metric": "age-since-initial-commit-days",
+          "warn-at-days": 365,
+          "fail-at-days": 180,
+          "description": "Leeftijd sinds de allereerste commit. Minder dan een half jaar oud → geen ‘proven technology’."
+        },
+        "contributors-last-year": {
+          "metric": "contributors-12-months",
+          "warn-at": 2,
+          "fail-at": 1,
+          "description": "Unieke bijdragers in de laatste 12 maanden. Weinig contributors verhoogt het busfactor-risico."
+        },
+        "open-vs-closed-issues": {
+          "metric": "open-issue-ratio",
+          "warn-at": 0.4,
+          "fail-at": 0.7,
+          "description": "Verhouding open t.o.v. gesloten issues. Een hoge ratio wijst op beperkte issue-afhandeling."
+        }    
+  }
+}
