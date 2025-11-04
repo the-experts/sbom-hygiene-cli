@@ -2,11 +2,13 @@ package nl.theexperts.sbom.parser;
 
 import com.siemens.sbom.standardbom.StandardBomParser;
 import com.siemens.sbom.standardbom.model.StandardBom;
+import jakarta.inject.Singleton;
 import org.cyclonedx.exception.ParseException;
 
 import java.io.File;
 import java.io.IOException;
 
+@Singleton
 public class SbomParser {
 
     public StandardBom read(File bomFile) {

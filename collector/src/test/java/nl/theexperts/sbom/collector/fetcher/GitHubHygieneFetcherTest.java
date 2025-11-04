@@ -1,7 +1,6 @@
 package nl.theexperts.sbom.collector.fetcher;
 
-
-import nl.theexperts.sbom.collector.SourceCodeRepositoryHygiene;
+import nl.theexperts.sbom.api.SourceCodeRepositoryHygiene;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockserver.integration.ClientAndServer;
@@ -19,13 +18,14 @@ import static org.mockserver.model.HttpResponse.response;
 @ExtendWith(MockServerExtension.class)
 class GitHubHygieneFetcherTest {
 
+    private static final String GITHUB_TOKEN = "abc";
     private final ClientAndServer client;
     private final GitHubHygieneFetcher fetcher;
 
     public GitHubHygieneFetcherTest(ClientAndServer client) {
         this.client = client;
         var port = client.remoteAddress().getPort();
-        fetcher = new GitHubHygieneFetcher("http://localhost:" + port);
+        fetcher = new GitHubHygieneFetcher("http://localhost:" + port, GITHUB_TOKEN.toCharArray());
     }
 
     @Test
@@ -34,6 +34,7 @@ class GitHubHygieneFetcherTest {
         var repo = "sbom-hygiene-cli";
         client.when(request()
                         .withMethod("GET")
+                        .withHeader("Authorization", "Bearer " + GITHUB_TOKEN)
                         .withPath("/repos/" + organisation + "/" + repo))
                 .respond(response()
                         .withStatusCode(200)
@@ -42,6 +43,7 @@ class GitHubHygieneFetcherTest {
                 );
         client.when(request()
                         .withMethod("GET")
+                        .withHeader("Authorization", "Bearer " + GITHUB_TOKEN)
                         .withPath("/repos/" + organisation + "/" + repo + "/releases"))
                 .respond(response()
                         .withStatusCode(200)
@@ -50,6 +52,7 @@ class GitHubHygieneFetcherTest {
                 );
         client.when(request()
                         .withMethod("GET")
+                        .withHeader("Authorization", "Bearer " + GITHUB_TOKEN)
                         .withPath("/repos/" + organisation + "/" + repo + "/contributors"))
                 .respond(response()
                         .withStatusCode(200)
@@ -58,6 +61,7 @@ class GitHubHygieneFetcherTest {
                 );
         client.when(request()
                         .withMethod("GET")
+                        .withHeader("Authorization", "Bearer " + GITHUB_TOKEN)
                         .withPath("/repos/" + organisation + "/" + repo + "/releases/latest"))
                 .respond(response()
                         .withStatusCode(200)

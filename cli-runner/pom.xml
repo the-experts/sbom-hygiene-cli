@@ -13,6 +13,11 @@
     <dependencies>
         <dependency>
             <groupId>nl.the-experts.sbom-hygiene</groupId>
+            <artifactId>api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nl.the-experts.sbom-hygiene</groupId>
             <artifactId>parser</artifactId>
             <version>${project.version}</version>
         </dependency>

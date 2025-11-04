@@ -1,6 +1,6 @@
 package nl.theexperts.sbom.collector.fetcher;
 
-import nl.theexperts.sbom.collector.SourceCodeRepositoryHygiene;
+import nl.theexperts.sbom.api.SourceCodeRepositoryHygiene;
 
 import java.net.URL;
 

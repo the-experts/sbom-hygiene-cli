@@ -1,4 +1,4 @@
-package nl.theexperts.sbom.collector;
+package nl.theexperts.sbom.api;
 
 public enum VcsType {
 
@@ -20,6 +20,10 @@ public enum VcsType {
             }
         }
         return OTHER;
+    }
+
+    public String getHostname() {
+        return hostname;
     }
 
 }

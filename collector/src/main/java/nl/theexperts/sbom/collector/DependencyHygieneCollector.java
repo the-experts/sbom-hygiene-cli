@@ -1,7 +1,12 @@
 package nl.theexperts.sbom.collector;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import nl.theexperts.sbom.api.SourceCodeRepositoryHygiene;
+import nl.theexperts.sbom.api.VcsType;
+
 import java.net.URL;
 
+@ApplicationScoped
 public class DependencyHygieneCollector {
 
     private final FetcherSelector fetcherSelector;
@@ -10,12 +15,12 @@ public class DependencyHygieneCollector {
         this.fetcherSelector = fetcherSelector;
     }
 
-    public SourceCodeRepositoryHygiene collect(URL uri) {
-        var fetcher = fetcherSelector.selectFetcher(VcsType.find(uri.getHost()));
+    public SourceCodeRepositoryHygiene collect(URL url, char[] token) {
+        var fetcher = fetcherSelector.selectFetcher(VcsType.find(url.getHost()), token);
         if (fetcher == null) {
-            throw new VcsTypeNotSupportedException(VcsType.OTHER, uri.toString());
+            throw new VcsTypeNotSupportedException(VcsType.OTHER, url.toString());
         }
-        return fetcher.fetch(uri);
+        return fetcher.fetch(url);
     }
 
 }

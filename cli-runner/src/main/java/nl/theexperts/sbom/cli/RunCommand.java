@@ -1,14 +1,20 @@
 package nl.theexperts.sbom.cli;
 
+import picocli.CommandLine.Command;
+import picocli.CommandLine.Option;
+
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 
-import picocli.CommandLine.Command;
-import picocli.CommandLine.Option;
-
 @Command(name = "run-sbom-hygiene")
 public class RunCommand implements Runnable {
+
+    private final DependencyAnalysisService dependencyAnalysisService;
+
+    public RunCommand(DependencyAnalysisService dependencyAnalysisService) {
+        this.dependencyAnalysisService = dependencyAnalysisService;
+    }
 
     @Option(
             names = {"-i", "--input"},
@@ -21,16 +27,23 @@ public class RunCommand implements Runnable {
     @Option(
             names = {"-o", "--output"},
             description = "Output name of the generated file",
-            defaultValue = "sbom-hygiene.json")
-    String outputPath;
+            defaultValue = "sbom-hygiene.json",
+            converter = ExpandPathConverter.class)
+    Path outputPath;
 
     @Option(
             names = "--rules",
             description = "Path to custom ruleset json",
-            defaultValue = "./dependency-validator/src/main/resources/license-rules.json")
-    String rulesJson;
+            defaultValue = "./dependency-validator/src/main/resources/license-rules.json",
+            converter = ExpandPathConverter.class)
+    Path rulesJson;
 
-    private RunCommand() {}
+    @Option(
+            names = "--credentials-file",
+            description = "Path to .netrc style credentials file",
+            defaultValue = "~/.config/sbom-hygiene/credentials",
+            converter = ExpandPathConverter.class)
+    Path credentialsPath;
 
     @Override
     public void run() {
@@ -49,7 +62,7 @@ public class RunCommand implements Runnable {
                 return;
             }
 
-            System.out.println("Resolved SBOM path: " + sbomPath);
+            IO.println("Resolved SBOM path: " + sbomPath);
 
         } catch (InvalidPathException e) {
             System.err.println("Invalid SBOM path: " + sbomPath + " -> " + e.getMessage());
@@ -59,9 +72,8 @@ public class RunCommand implements Runnable {
         }
 
         System.out.println("Running sbom " + sbomPath + " with json " + rulesJson + " to output " + outputPath);
-        // TODO: Send SBOM to parser
-        // TODO: Accept standard format back from parser
-        // TODO: call processor logic here
+        dependencyAnalysisService.analyzeDependencyHygiene(sbomPath, outputPath, rulesJson, credentialsPath);
+
     }
 
 }

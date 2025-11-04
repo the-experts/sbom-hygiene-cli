@@ -1,6 +1,6 @@
 package nl.theexperts.sbom.collector.fetcher;
 
-import nl.theexperts.sbom.collector.SourceCodeRepositoryHygiene;
+import nl.theexperts.sbom.api.SourceCodeRepositoryHygiene;
 import nl.theexperts.sbom.collector.VcsCollectionException;
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.GitHub;
@@ -8,6 +8,7 @@ import org.kohsuke.github.GitHubBuilder;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
@@ -15,9 +16,12 @@ public class GitHubHygieneFetcher implements SourceCodeRepositoryHygieneFetcher 
 
     private final GitHub githubClient;
 
-    public GitHubHygieneFetcher(String apiHost) {
+    public GitHubHygieneFetcher(String apiHost, char[] token) {
         try {
-            githubClient = new GitHubBuilder().withEndpoint(apiHost).build();
+            githubClient = new GitHubBuilder()
+                    .withEndpoint(apiHost)
+                    .withOAuthToken(String.copyValueOf(token))
+                    .build();
         } catch (IOException e) {
             throw new VcsCollectionException("Could not initialize GitHub client", apiHost, e);
         }
@@ -26,7 +30,9 @@ public class GitHubHygieneFetcher implements SourceCodeRepositoryHygieneFetcher 
     @Override
     public SourceCodeRepositoryHygiene fetch(URL url) {
         try {
-            var repository = githubClient.getRepository(url.getPath().substring(1));
+            var path = Path.of(url.getPath()).normalize();
+            var repositoryPath = path.subpath(0, 2).toString();
+            var repository = githubClient.getRepository(repositoryPath);
             return new SourceCodeRepositoryHygiene(url, toScore(repository));
         } catch (IOException e) {
             throw new VcsCollectionException(url.toString(), e);
