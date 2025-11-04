@@ -75,8 +75,7 @@ class GitHubHygieneFetcherTest {
                 3,
                 null,
                 LocalDateTime.of(2025, 11, 4, 12, 17, 22)
-        )
-        ));
+        )));
     }
 
 }
