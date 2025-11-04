@@ -11,12 +11,6 @@
     </parent>
 
     <dependencies>
-        <!-- picocli dependency -->
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-picocli</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>nl.the-experts.sbom-hygiene</groupId>
             <artifactId>parser</artifactId>
@@ -42,6 +36,11 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>
+        </dependency>
+        <!-- picocli dependency -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-picocli</artifactId>
         </dependency>
     </dependencies>
 
