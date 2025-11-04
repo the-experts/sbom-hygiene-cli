@@ -14,8 +14,9 @@ import java.util.Objects;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class SbomParserTest {
+
     @ParameterizedTest
-    @ValueSource(strings = {"syft-bom.json","cyclonedx-maven-plugin-bom.xml"})
+    @ValueSource(strings = {"syft-bom.json", "cyclonedx-maven-plugin-bom.xml"})
     void when_sbom_then_return_standardbom(String resource) throws IOException, ParseException, URISyntaxException {
         var standardBom = new StandardBomParser().parse(getClassPathFile(resource));
         assertThat(standardBom).isNotNull();
@@ -28,4 +29,5 @@ class SbomParserTest {
                         .toURI())
                 .toFile();
     }
+
 }
