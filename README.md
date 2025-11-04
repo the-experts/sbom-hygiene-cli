@@ -5,7 +5,12 @@ The SBOM Hygiene CLI helps you to keep your dependencies tidy and neat
 In order to build a native executable you will need to have [GraalVM JDK25](https://quarkus.io/guides/building-native-image)
 installed.
 
-Create a native build using:
+First package the application using:
+```shell
+mvn clean package -DskipTests
+```
+
+Now create a native build using:
 ```shell
 mvn -Pnative -pl cli-runner -am -DskipTests package
 ```
