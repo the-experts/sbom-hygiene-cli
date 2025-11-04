@@ -12,17 +12,23 @@
     </parent>
 
     <properties>
+        <github-api.version>1.330</github-api.version>
+        <mockserver.version>5.15.0</mockserver.version>
     </properties>
 
-    <dependencyManagement>
-    </dependencyManagement>
-
     <dependencies>
+        <dependency>
+            <groupId>org.kohsuke</groupId>
+            <artifactId>github-api</artifactId>
+            <version>${github-api.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-junit-jupiter</artifactId>
+            <version>${mockserver.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
-    <build>
-    </build>
-
-    <profiles>
-    </profiles>
 </project>
