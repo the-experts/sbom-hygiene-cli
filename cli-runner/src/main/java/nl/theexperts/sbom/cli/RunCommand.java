@@ -124,11 +124,4 @@ public class RunCommand implements Runnable {
         System.out.println("No CI workspace env var detected; using current working dir: " + cwd);
         return cwd;
     }
-
-    // exit with 0 if successful or 1 if failed
-    static void main(String[] args) {
-        int exitCode = new CommandLine(new RunCommand()).execute(args);
-        System.out.println("ExitCode: " + exitCode);
-        System.exit(exitCode);
-    }
 }
