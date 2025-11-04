@@ -1,0 +1,15 @@
+###
+# GET repository
+GET {{host}}/repos/{{organisation}}/{{repo}}
+
+###
+# GET releases
+GET {{host}}/repos/{{organisation}}/{{repo}}/releases
+
+###
+# GET releases
+GET {{host}}/repos/{{organisation}}/{{repo}}/contributors
+
+###
+# GET latest release
+GET {{host}}/repos/{{organisation}}/{{repo}}/releases/latest
