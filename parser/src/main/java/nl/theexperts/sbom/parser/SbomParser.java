@@ -1,3 +1,5 @@
+package nl.theexperts.sbom.parser;
+
 import com.siemens.sbom.standardbom.StandardBomParser;
 import com.siemens.sbom.standardbom.model.StandardBom;
 import org.cyclonedx.exception.ParseException;
