@@ -1,12 +1,9 @@
 package nl.theexperts.sbom.cli;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
-import io.quarkus.runtime.configuration.PathConverter;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
