@@ -83,6 +83,8 @@ public class RunCommand implements Runnable {
         }
 
         System.out.println("Running sbom " + sbomPath + " with json " + rulesJson + " to output " + outputPath);
+        // TODO: Send SBOM to parser
+        // TODO: Accept standard format back from parser
         // TODO: call processor logic here
     }
 
