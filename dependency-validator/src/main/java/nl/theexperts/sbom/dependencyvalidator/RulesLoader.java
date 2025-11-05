@@ -7,21 +7,19 @@ import nl.theexperts.sbom.dependencyvalidator.model.ValidationRules;
 
 import java.nio.file.Path;
 
-import static java.lang.System.load;
-
 public class RulesLoader {
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static ValidationRules loadValidationRules(Path override) {
-        return load(override, "resources/validation-rules.json", ValidationRules.class);
+        return load(override, "validation-rules.json", ValidationRules.class);
     }
 
     public static FailureRules loadFailureRules(Path override) {
-        return load(override, "resources/failure-rules.json", FailureRules.class);
+        return load(override, "failure-rules.json", FailureRules.class);
     }
 
     public static LicenseRules loadLicenseRules(Path override) {
-        return load(override, "resources/license-rules.json", LicenseRules.class);
+        return load(override, "license-rules.json", LicenseRules.class);
     }
 
     private static <T> T load(Path overridePath, String defaultResourcePath, Class<T> type) {

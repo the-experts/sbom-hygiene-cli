@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class FailureRules {
 
-    @JsonProperty
+    @JsonProperty("failure-rules")
     private FailureCriteria rules;
 
     public FailureCriteria getRules() {
