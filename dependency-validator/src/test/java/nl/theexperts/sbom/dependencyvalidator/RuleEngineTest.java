@@ -19,7 +19,6 @@ class RuleEngineTest {
     void permissiveLicenseShouldPassEnforcement() throws Exception {
         RuleEngine engine = new RuleEngine();
 
-        // Create a dependency whose URL contains 'MIT' so the heuristic detects the license
         Dependency.Score score = new Dependency.Score(1000, 200, 1, 5, LocalDateTime.now().minusYears(2), LocalDateTime.now());
         URL repoUrl = URI.create("https://example.com/repos/foo/blob/main/LICENSE-MIT").toURL();
         String license = "MIT";
@@ -41,7 +40,6 @@ class RuleEngineTest {
     void weakCopyLeftLicenseShouldWarnEnforcement() throws Exception {
         RuleEngine engine = new RuleEngine();
 
-        // Create a dependency whose URL contains 'LGPL-3.0' so the heuristic detects the license
         Dependency.Score score = new Dependency.Score(500, 50, 2, 3, LocalDateTime.now().minusMonths(6), LocalDateTime.now());
         Dependency dep = new Dependency(URI.create("https://example.com/repos/foo/blob/main/LICENSE-LGPL-3.0").toURL(), score, "LGPL-3.0");
 
