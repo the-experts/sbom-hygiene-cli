@@ -73,7 +73,6 @@ public class RunCommand implements Runnable {
 
         System.out.println("Running sbom " + sbomPath + " with json " + rulesJson + " to output " + outputPath);
         dependencyAnalysisService.analyzeDependencyHygiene(sbomPath, outputPath, rulesJson, credentialsPath);
-
     }
 
 }
