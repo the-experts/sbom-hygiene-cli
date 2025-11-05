@@ -49,8 +49,11 @@ public class RuleEngine {
         List<RuleFinding> results = new ArrayList<>();
 
         validationRules.getRules().forEach((ruleId, criteria) -> {
-            RuleFinding finding = applyValidationRule(dep, ruleId, criteria);
-            results.add(finding);
+            Object metricObj = criteria.get("metric");
+            if (metricObj != null) {
+                RuleFinding finding = applyValidationRule(dep, ruleId, criteria);
+                results.add(finding);
+            }
         });
 
         return results;
@@ -62,9 +65,6 @@ public class RuleEngine {
             ValidationRuleCriteria criteria
     ) {
         Object metricObj = criteria.get("metric");
-        if (metricObj == null) {
-            return new RuleFinding(dep, ruleId, RuleCategory.VALIDATION, RuleOutcome.INFO, List.of("No metric specified in rule"));
-        }
         String metric = metricObj.toString();
 
         Double warnThreshold = extractThreshold(criteria, "warn-at", "warn-at-days", "warn-at-count", "warn-at-days");
