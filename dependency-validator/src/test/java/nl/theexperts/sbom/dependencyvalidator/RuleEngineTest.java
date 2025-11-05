@@ -1,9 +1,9 @@
 package nl.theexperts.sbom.dependencyvalidator;
 
-import nl.theexperts.sbom.dependencyvalidator.model.Dependency;
-import nl.theexperts.sbom.dependencyvalidator.model.ValidationSummary;
-import nl.theexperts.sbom.dependencyvalidator.model.RuleFinding;
-import nl.theexperts.sbom.dependencyvalidator.model.RuleOutcome;
+import nl.theexperts.sbom.api.validation.Dependency;
+import nl.theexperts.sbom.api.validation.ValidationSummary;
+import nl.theexperts.sbom.api.validation.RuleFinding;
+import nl.theexperts.sbom.api.validation.RuleOutcome;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;

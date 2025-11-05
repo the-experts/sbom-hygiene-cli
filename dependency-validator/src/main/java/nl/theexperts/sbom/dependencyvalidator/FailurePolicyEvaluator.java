@@ -1,10 +1,10 @@
 package nl.theexperts.sbom.dependencyvalidator;
 
-import nl.theexperts.sbom.dependencyvalidator.model.FailureEvaluationResult;
-import nl.theexperts.sbom.dependencyvalidator.model.FailureRules;
-import nl.theexperts.sbom.dependencyvalidator.model.RuleFinding;
-import nl.theexperts.sbom.dependencyvalidator.model.RuleOutcome;
-import nl.theexperts.sbom.dependencyvalidator.model.RuleCategory;
+import nl.theexperts.sbom.api.validation.FailureEvaluationResult;
+import nl.theexperts.sbom.api.validation.FailureRules;
+import nl.theexperts.sbom.api.validation.RuleFinding;
+import nl.theexperts.sbom.api.validation.RuleOutcome;
+import nl.theexperts.sbom.api.validation.RuleCategory;
 
 import java.util.List;
 import java.util.Map;

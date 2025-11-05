@@ -15,7 +15,7 @@ class ReportWriterTest {
 
     @Test
     void generateReport_returnsNonEmptyString() throws JsonProcessingException {
-        var results = reportWriter.generateReport(Path.of("/tmp/output.json"), List.of("Test result 1", "Test result 2"));
+        var results = reportWriter.generateReport(Path.of("/tmp/output.json"), List.of());
 
         assertNotNull(results);
         assertThat(results).containsIgnoringCase("Test result 1");

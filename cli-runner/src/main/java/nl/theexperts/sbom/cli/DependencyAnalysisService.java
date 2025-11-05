@@ -6,8 +6,8 @@ import nl.theexperts.sbom.cli.credentials.NetrcSecretSource;
 import nl.theexperts.sbom.collector.DependencyHygieneCollector;
 import nl.theexperts.sbom.api.SourceCodeRepositoryHygiene;
 import nl.theexperts.sbom.dependencyvalidator.RuleEngine;
-import nl.theexperts.sbom.dependencyvalidator.model.Dependency;
-import nl.theexperts.sbom.dependencyvalidator.model.ValidationSummary;
+import nl.theexperts.sbom.api.validation.Dependency;
+import nl.theexperts.sbom.api.validation.ValidationSummary;
 import nl.theexperts.sbom.parser.SbomParser;
 import nl.theexperts.sbom.reporter.ReportWriter;
 
@@ -78,7 +78,7 @@ public class DependencyAnalysisService {
 
             // TODO: Push the summaries to the reporter
         }
-        reportWriter.writeReport(outputPath, sbomPath, List.of("Result 1"));
+        reportWriter.writeReport(outputPath, sbomPath, summaries);
     }
 
     private char[] getTokenForUrl(String repoUrl, NetrcSecretSource credentialsSource) {

@@ -1,4 +1,4 @@
-package nl.theexperts.sbom.dependencyvalidator.model;
+package nl.theexperts.sbom.api.validation;
 
 public record FailureEvaluationResult(boolean success, double score) {
 }

@@ -1,14 +1,12 @@
 package nl.theexperts.sbom.dependencyvalidator;
 
-import nl.theexperts.sbom.dependencyvalidator.model.*;
+import nl.theexperts.sbom.api.validation.*;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 public class RuleEngine {
 

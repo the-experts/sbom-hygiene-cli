@@ -11,22 +11,17 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <properties>
-    </properties>
-
-    <dependencyManagement>
-    </dependencyManagement>
-
     <dependencies>
+        <dependency>
+            <groupId>nl.the-experts.sbom-hygiene</groupId>
+            <artifactId>api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-jackson</artifactId>
         </dependency>
     </dependencies>
 
-    <build>
-    </build>
-
-    <profiles>
-    </profiles>
 </project>

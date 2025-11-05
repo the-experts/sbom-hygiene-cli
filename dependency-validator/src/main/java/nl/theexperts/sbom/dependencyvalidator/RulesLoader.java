@@ -1,9 +1,9 @@
 package nl.theexperts.sbom.dependencyvalidator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nl.theexperts.sbom.dependencyvalidator.model.FailureRules;
-import nl.theexperts.sbom.dependencyvalidator.model.LicenseRules;
-import nl.theexperts.sbom.dependencyvalidator.model.ValidationRules;
+import nl.theexperts.sbom.api.validation.FailureRules;
+import nl.theexperts.sbom.api.validation.LicenseRules;
+import nl.theexperts.sbom.api.validation.ValidationRules;
 
 import java.nio.file.Path;
 
