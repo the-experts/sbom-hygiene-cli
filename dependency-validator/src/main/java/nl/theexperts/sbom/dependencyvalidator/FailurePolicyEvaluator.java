@@ -54,12 +54,6 @@ public class FailurePolicyEvaluator {
             }
         }
 
-        int minDeps = cfg.getMinDependenciesAnalyzed();
-        if (minDeps > 0 && uniqueCount < minDeps) {
-            // Not enough dependencies analyzed -> treat as failure
-            return new FailureEvaluationResult(false, 0.0);
-        }
-
         // Severity weights from config (error, warning, info)
         Map<String, Double> severityWeights = cfg.getRuleSeverityWeights();
         double weightError = severityWeights != null && severityWeights.containsKey("error") ? severityWeights.get("error") : 1.0;

@@ -110,9 +110,9 @@ public class RuleEngine {
             case "stars" -> {
                 return new MetricInfo(true, (double) dep.score().stars(), true, null);
             }
-            case "downloads-per-month", "downloads" -> {
-                return new MetricInfo(true, (double) dep.score().downloads(), true, null);
-            }
+//            case "downloads-per-month", "downloads" -> {
+//                return new MetricInfo(true, (double) dep.score().downloads(), true, null);
+//            }
             case "contributors-12-months", "contributors" -> {
                 return new MetricInfo(true, (double) dep.score().contributors(), true, null);
             }
