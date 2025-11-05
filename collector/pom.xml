@@ -12,7 +12,6 @@
     </parent>
 
     <properties>
-        <quarkus-rest-client.version>3.15.7</quarkus-rest-client.version>
         <mockserver.version>5.15.0</mockserver.version>
     </properties>
 
