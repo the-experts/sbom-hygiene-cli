@@ -7,6 +7,7 @@ import nl.theexperts.sbom.dependencyvalidator.model.RuleOutcome;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
+import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,7 +25,9 @@ class RuleEngineTest {
 
         // Create a dependency whose URL contains 'MIT' so the heuristic detects the license
         Dependency.Score score = new Dependency.Score(1000, 200, 1, 5, LocalDateTime.now().minusYears(2), LocalDateTime.now());
-        Dependency dep = new Dependency(URI.create("https://example.com/repos/foo/blob/main/LICENSE-MIT").toURL(), score);
+        URL repoUrl = URI.create("https://example.com/repos/foo/blob/main/LICENSE-MIT").toURL();
+        URL licenseUrl = URI.create("https://example.com/licenses/MIT").toURL();
+        Dependency dep = new Dependency(repoUrl, score, licenseUrl);
 
         ValidationSummary summary = engine.evaluate(List.of(dep), validationRules, licenseRules, failureRules);
 
@@ -39,6 +42,30 @@ class RuleEngineTest {
     }
 
     @Test
+    void weakCopyLeftLicenseShouldWarnEnforcement() throws Exception {
+        RuleEngine engine = new RuleEngine();
+
+        var validationRules = RulesLoader.loadValidationRules(null);
+        var licenseRules = RulesLoader.loadLicenseRules(null);
+        var failureRules = RulesLoader.loadFailureRules(null);
+
+        // Create a dependency whose URL contains 'LGPL-3.0' so the heuristic detects the license
+        Dependency.Score score = new Dependency.Score(500, 50, 2, 3, LocalDateTime.now().minusMonths(6), LocalDateTime.now());
+        Dependency dep = new Dependency(URI.create("https://example.com/repos/foo/blob/main/LICENSE-LGPL-3.0").toURL(), score);
+
+        ValidationSummary summary = engine.evaluate(List.of(dep), validationRules, licenseRules, failureRules);
+
+        assertNotNull(summary);
+        List<RuleFinding> findings = summary.findings();
+        assertFalse(findings.isEmpty(), "Expected some findings");
+
+        // find license-enforcement finding
+        var lic = findings.stream().filter(f -> f.ruleId().equals("license-enforcement")).findFirst();
+        assertTrue(lic.isPresent(), "license-enforcement finding expected");
+        assertEquals(RuleOutcome.WARN, lic.get().outcome(), "LGPL-3.0 should trigger a warning by default policy");
+    }
+
+    @Test
     void noLicenseFileShouldTriggerNoLicensePolicy() throws Exception {
         RuleEngine engine = new RuleEngine();
 
@@ -47,7 +74,8 @@ class RuleEngineTest {
         var failureRules = RulesLoader.loadFailureRules(null);
 
         Dependency.Score score = new Dependency.Score(100, 5, 1, 1, LocalDateTime.now().minusMonths(1), LocalDateTime.now());
-        Dependency dep = new Dependency(URI.create("https://example.com/repos/foo").toURL(), score);
+        URL repoUrl = URI.create("https://example.com/repos/foo").toURL();
+        Dependency dep = new Dependency(repoUrl, score, null);
 
         ValidationSummary summary = engine.evaluate(List.of(dep), validationRules, licenseRules, failureRules);
         assertNotNull(summary);

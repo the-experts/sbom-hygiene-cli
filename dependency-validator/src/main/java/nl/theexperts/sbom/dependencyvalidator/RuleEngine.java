@@ -282,8 +282,9 @@ public class RuleEngine {
     }
 
     private String detectLicenseByUrl(Dependency dep, Map<String, Object> licensePolicy) {
-        if (dep.url() == null) return null;
-        String path = dep.url().getPath();
+        java.net.URL candidate = dep.licenseUrl() != null ? dep.licenseUrl() : dep.url();
+        if (candidate == null) return null;
+        String path = candidate.getPath();
         if (path == null) return null;
         String lower = path.toLowerCase();
 
@@ -298,6 +299,27 @@ public class RuleEngine {
         for (String t : tokens) {
             if (lower.contains(t)) return t;
         }
+
+        // Try relaxed matching: normalize tokens by removing common SPDX suffixes ("-only", "-or-later")
+        for (String t : tokens) {
+            String norm = t.replaceAll("-(only|or-later)$", "");
+            if (lower.contains(norm)) return norm;
+        }
+
+        // Lastly, try to match any policy entry by checking if path contains parts of the policy values
+        for (var entry : licensePolicy.entrySet()) {
+            Object listObj = entry.getValue();
+            if (!(listObj instanceof Iterable)) continue;
+            for (Object o : (Iterable<?>) listObj) {
+                if (o == null) continue;
+                String s = o.toString().toLowerCase();
+                String base = s.replaceAll("-(only|or-later)$", "");
+                if (lower.contains(s) || lower.contains(base) || s.contains(lower)) {
+                    return base;
+                }
+            }
+        }
+
         return null;
     }
 
