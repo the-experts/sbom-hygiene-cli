@@ -2,6 +2,7 @@ package nl.theexperts.sbom.dependencyvalidator;
 
 import nl.theexperts.sbom.dependencyvalidator.model.*;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -16,26 +17,37 @@ public class RuleEngine {
     private static final String NON_SPDX = "non-spdx";
     private static final String NO_LICENSE_FILE = "no-license-file";
 
+    private final ValidationRules validationRules;
+    private final LicenseRules licenseRules;
+    private final FailureRules failureRules;
+
+    // Default constructor loads defaults
+    public RuleEngine() {
+        this(null, null, null);
+    }
+
+    // Constructor with override paths
+    public RuleEngine(Path validationRulesOverridePath, Path licenseRulesOverridePath, Path failureRulesOverridePath) {
+        this.validationRules = RulesLoader.loadValidationRules(validationRulesOverridePath);
+        this.licenseRules = RulesLoader.loadLicenseRules(licenseRulesOverridePath);
+        this.failureRules = RulesLoader.loadFailureRules(failureRulesOverridePath);
+    }
+
     public ValidationSummary evaluate(
-            List<Dependency> dependencies,
-            ValidationRules validationRules,
-            LicenseRules licenseRules,
-            FailureRules failureRules
+            Dependency dependency
     ) {
         List<RuleFinding> findings = new ArrayList<>();
 
-        for (Dependency dep : dependencies) {
-            // Evaluate each dependency against the provided rules
-            findings.addAll(applyValidationRules(dep, validationRules));
-            findings.addAll(applyLicenseRules(dep, licenseRules));
-        }
+        // Evaluate each dependency against the provided rules
+        findings.addAll(applyValidationRules(dependency));
+        findings.addAll(applyLicenseRules(dependency));
 
         FailureEvaluationResult eval = FailurePolicyEvaluator.evaluate(findings, failureRules);
 
         return new ValidationSummary(eval.success(), eval.score(), findings);
     }
 
-    private List<RuleFinding> applyValidationRules(Dependency dep, ValidationRules validationRules) {
+    private List<RuleFinding> applyValidationRules(Dependency dep) {
         List<RuleFinding> results = new ArrayList<>();
 
         validationRules.getRules().forEach((ruleId, criteria) -> {
@@ -51,29 +63,24 @@ public class RuleEngine {
             String ruleId,
             ValidationRuleCriteria criteria
     ) {
-        // Extract metric name
         Object metricObj = criteria.get("metric");
         if (metricObj == null) {
             return new RuleFinding(dep, ruleId, RuleCategory.VALIDATION, RuleOutcome.INFO, List.of("No metric specified in rule"));
         }
         String metric = metricObj.toString();
 
-        // Extract thresholds (try multiple key variants)
         Double warnThreshold = extractThreshold(criteria, "warn-at", "warn-at-days", "warn-at-count", "warn-at-days");
         Double failThreshold = extractThreshold(criteria, "fail-at", "fail-at-days", "fail-at-count", "fail-at-days");
 
-        // Resolve metric value
         MetricInfo metricInfo = resolveMetricValue(dep, metric);
         if (!metricInfo.available) {
             return new RuleFinding(dep, ruleId, RuleCategory.VALIDATION, RuleOutcome.INFO, List.of(metricInfo.message));
         }
 
-        // If no thresholds configured, PASS
         if (warnThreshold == null && failThreshold == null) {
             return new RuleFinding(dep, ruleId, RuleCategory.VALIDATION, RuleOutcome.PASS, List.of("No thresholds configured"));
         }
 
-        // Evaluate thresholds and return finding
         return evaluateThresholds(dep, ruleId, metricInfo.value, metricInfo.higherIsBetter, warnThreshold, failThreshold);
     }
 
@@ -85,7 +92,7 @@ public class RuleEngine {
             if (v instanceof Number number) return number.doubleValue();
             try {
                 return Double.parseDouble(v.toString());
-            } catch (NumberFormatException _) {
+            } catch (NumberFormatException e) {
                 // ignore and try next key
             }
         }
@@ -153,10 +160,10 @@ public class RuleEngine {
         return new RuleFinding(dep, ruleId, RuleCategory.VALIDATION, RuleOutcome.PASS, messages);
     }
 
-    private List<RuleFinding> applyLicenseRules(Dependency dep, LicenseRules rules) {
+    private List<RuleFinding> applyLicenseRules(Dependency dep) {
         List<RuleFinding> results = new ArrayList<>();
 
-        Map<String, Object> all = safeAsMap(rules.getRules());
+        Map<String, Object> all = safeAsMap(licenseRules.getRules());
 
         Map<String, Object> licensePolicy = safeAsMap(all.get("license-policy"));
         Map<String, String> enforcement = safeAsStringMap(all.get("license-enforcement"));
@@ -170,7 +177,8 @@ public class RuleEngine {
             if (f instanceof Boolean b) hasCopyleftFail = b;
         }
 
-        String detectedLicense = detectLicenseForDependency(dep, licensePolicy);
+        // Prefer an explicit license string on Dependency, otherwise detect from URL
+        String detectedLicense = dep.license();
 
         // Denylist override
         if (detectedLicense != null && denylist.stream().anyMatch(s -> s.equalsIgnoreCase(detectedLicense))) {
@@ -238,89 +246,6 @@ public class RuleEngine {
     private List<String> safeAsList(Object o) {
         if (o instanceof List) return ((List<?>) o).stream().map(Object::toString).toList();
         return List.of();
-    }
-
-    /**
-     * Attempt to detect a license identifier for the dependency.
-     * Strategies:
-     *  - Reflectively check common properties (license, getLicense, licenses)
-     *  - Heuristic: try to match known SPDX ids or license names from the licensePolicy map inside the dependency URL path
-     */
-    private String detectLicenseForDependency(Dependency dep, Map<String, Object> licensePolicy) {
-        if (dep == null) return null;
-
-        // Try reflection first
-        String fromReflection = detectLicenseByReflection(dep);
-        if (fromReflection != null) return fromReflection;
-
-        // Then heuristics based on URL and known tokens
-        return detectLicenseByUrl(dep, licensePolicy);
-    }
-
-    private String detectLicenseByReflection(Dependency dep) {
-        try {
-            var cls = dep.getClass();
-            for (var m : cls.getMethods()) {
-                String name = m.getName().toLowerCase();
-                if (name.equals("license") || name.equals("getlicense")) {
-                    Object v = m.invoke(dep);
-                    if (v != null) return v.toString();
-                }
-                if (name.equals("licenses") || name.equals("getlicenses")) {
-                    Object v = m.invoke(dep);
-                    if (v instanceof Iterable<?> it) {
-                        for (Object e : it) {
-                            if (e != null) return e.toString();
-                        }
-                    } else if (v != null) return v.toString();
-                }
-            }
-        } catch (Exception _) {
-            // ignore reflection errors and fall back
-        }
-        return null;
-    }
-
-    private String detectLicenseByUrl(Dependency dep, Map<String, Object> licensePolicy) {
-        java.net.URL candidate = dep.licenseUrl() != null ? dep.licenseUrl() : dep.url();
-        if (candidate == null) return null;
-        String path = candidate.getPath();
-        if (path == null) return null;
-        String lower = path.toLowerCase();
-
-        // Build a flattened set of known license tokens from licensePolicy
-        Set<String> tokens = licensePolicy.values().stream()
-                .filter(Iterable.class::isInstance)
-                .flatMap(v -> StreamSupport.stream(((Iterable<?>) v).spliterator(), false))
-                .map(Object::toString)
-                .map(String::toLowerCase)
-                .collect(Collectors.toSet());
-
-        for (String t : tokens) {
-            if (lower.contains(t)) return t;
-        }
-
-        // Try relaxed matching: normalize tokens by removing common SPDX suffixes ("-only", "-or-later")
-        for (String t : tokens) {
-            String norm = t.replaceAll("-(only|or-later)$", "");
-            if (lower.contains(norm)) return norm;
-        }
-
-        // Lastly, try to match any policy entry by checking if path contains parts of the policy values
-        for (var entry : licensePolicy.entrySet()) {
-            Object listObj = entry.getValue();
-            if (!(listObj instanceof Iterable)) continue;
-            for (Object o : (Iterable<?>) listObj) {
-                if (o == null) continue;
-                String s = o.toString().toLowerCase();
-                String base = s.replaceAll("-(only|or-later)$", "");
-                if (lower.contains(s) || lower.contains(base) || s.contains(lower)) {
-                    return base;
-                }
-            }
-        }
-
-        return null;
     }
 
     private String mapLicenseToGroup(String licenseId, Map<String, Object> licensePolicy) {

@@ -19,17 +19,13 @@ class RuleEngineTest {
     void permissiveLicenseShouldPassEnforcement() throws Exception {
         RuleEngine engine = new RuleEngine();
 
-        var validationRules = RulesLoader.loadValidationRules(null);
-        var licenseRules = RulesLoader.loadLicenseRules(null);
-        var failureRules = RulesLoader.loadFailureRules(null);
-
         // Create a dependency whose URL contains 'MIT' so the heuristic detects the license
         Dependency.Score score = new Dependency.Score(1000, 200, 1, 5, LocalDateTime.now().minusYears(2), LocalDateTime.now());
         URL repoUrl = URI.create("https://example.com/repos/foo/blob/main/LICENSE-MIT").toURL();
-        URL licenseUrl = URI.create("https://example.com/licenses/MIT").toURL();
-        Dependency dep = new Dependency(repoUrl, score, licenseUrl);
+        String license = "MIT";
+        Dependency dep = new Dependency(repoUrl, score, license);
 
-        ValidationSummary summary = engine.evaluate(List.of(dep), validationRules, licenseRules, failureRules);
+        ValidationSummary summary = engine.evaluate(dep);
 
         assertNotNull(summary);
         List<RuleFinding> findings = summary.findings();
@@ -45,15 +41,11 @@ class RuleEngineTest {
     void weakCopyLeftLicenseShouldWarnEnforcement() throws Exception {
         RuleEngine engine = new RuleEngine();
 
-        var validationRules = RulesLoader.loadValidationRules(null);
-        var licenseRules = RulesLoader.loadLicenseRules(null);
-        var failureRules = RulesLoader.loadFailureRules(null);
-
         // Create a dependency whose URL contains 'LGPL-3.0' so the heuristic detects the license
         Dependency.Score score = new Dependency.Score(500, 50, 2, 3, LocalDateTime.now().minusMonths(6), LocalDateTime.now());
-        Dependency dep = new Dependency(URI.create("https://example.com/repos/foo/blob/main/LICENSE-LGPL-3.0").toURL(), score);
+        Dependency dep = new Dependency(URI.create("https://example.com/repos/foo/blob/main/LICENSE-LGPL-3.0").toURL(), score, "LGPL-3.0");
 
-        ValidationSummary summary = engine.evaluate(List.of(dep), validationRules, licenseRules, failureRules);
+        ValidationSummary summary = engine.evaluate(dep);
 
         assertNotNull(summary);
         List<RuleFinding> findings = summary.findings();
@@ -69,15 +61,11 @@ class RuleEngineTest {
     void noLicenseFileShouldTriggerNoLicensePolicy() throws Exception {
         RuleEngine engine = new RuleEngine();
 
-        var validationRules = RulesLoader.loadValidationRules(null);
-        var licenseRules = RulesLoader.loadLicenseRules(null);
-        var failureRules = RulesLoader.loadFailureRules(null);
-
         Dependency.Score score = new Dependency.Score(100, 5, 1, 1, LocalDateTime.now().minusMonths(1), LocalDateTime.now());
         URL repoUrl = URI.create("https://example.com/repos/foo").toURL();
         Dependency dep = new Dependency(repoUrl, score, null);
 
-        ValidationSummary summary = engine.evaluate(List.of(dep), validationRules, licenseRules, failureRules);
+        ValidationSummary summary = engine.evaluate(dep);
         assertNotNull(summary);
 
         var lic = summary.findings().stream().filter(f -> f.ruleId().equals("license-enforcement")).findFirst();
