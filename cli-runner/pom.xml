@@ -78,6 +78,18 @@
             <properties>
                 <quarkus.native.enabled>true</quarkus.native.enabled>
             </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>io.quarkus.platform</groupId>
+                        <artifactId>quarkus-maven-plugin</artifactId>
+                        <version>${quarkus.platform.version}</version>
+                        <configuration>
+                            <finalName>${project.build.finalName}</finalName>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 
