@@ -1,0 +1,1615 @@
+{
+  "reflection": [
+    {
+      "type": "ch.qos.logback.classic.Logger"
+    },
+    {
+      "type": "com.ctc.wstx.stax.WstxInputFactory"
+    },
+    {
+      "type": "com.ctc.wstx.stax.WstxOutputFactory"
+    },
+    {
+      "type": "com.fasterxml.jackson.databind.deser.BeanDeserializerModifier[]"
+    },
+    {
+      "type": "com.fasterxml.jackson.databind.ext.Java7SupportImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.fasterxml.jackson.databind.ser.BeanSerializerModifier[]"
+    },
+    {
+      "type": "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.bootstrap.logging.InitialConfigurator"
+    },
+    {
+      "type": "io.quarkus.deployment.configuration.BuildTimeConfigBuilderCustomizer"
+    },
+    {
+      "type": "io.quarkus.deployment.dev.testing.TestConfig"
+    },
+    {
+      "type": "io.quarkus.deployment.dev.testing.TestConfig$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.deployment.dev.testing.TestConfig$Container"
+    },
+    {
+      "type": "io.quarkus.deployment.dev.testing.TestConfig$Container$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.deployment.dev.testing.TestConfig$Profile"
+    },
+    {
+      "type": "io.quarkus.deployment.dev.testing.TestConfig$Profile$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.deployment.dev.testing.TestConfig$RestAssured"
+    },
+    {
+      "type": "io.quarkus.deployment.dev.testing.TestConfig$RestAssured$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.configuration.CharsetConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.configuration.CidrAddressConverter"
+    },
+    {
+      "type": "io.quarkus.runtime.configuration.DurationConverter"
+    },
+    {
+      "type": "io.quarkus.runtime.configuration.InetAddressConverter"
+    },
+    {
+      "type": "io.quarkus.runtime.configuration.InetSocketAddressConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.configuration.LocaleConverter"
+    },
+    {
+      "type": "io.quarkus.runtime.configuration.MemorySizeConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.configuration.PathConverter"
+    },
+    {
+      "type": "io.quarkus.runtime.configuration.RegexConverter"
+    },
+    {
+      "type": "io.quarkus.runtime.configuration.TrimmedStringConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.configuration.ZoneIdConverter"
+    },
+    {
+      "type": "io.quarkus.runtime.console.ConsoleRuntimeConfig"
+    },
+    {
+      "type": "io.quarkus.runtime.console.ConsoleRuntimeConfig$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LevelConverter",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogBuildTimeConfig"
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogBuildTimeConfig$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogBuildTimeConfig$CategoryBuildTimeConfig"
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig"
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$AsyncConfig"
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$AsyncConfig$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$CategoryConfig"
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$CleanupFilterConfig"
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$ConsoleConfig"
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$ConsoleConfig$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$FileConfig"
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$FileConfig$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$FileConfig$RotationConfig"
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$FileConfig$RotationConfig$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$SocketConfig"
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$SocketConfig$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$SyslogConfig"
+    },
+    {
+      "type": "io.quarkus.runtime.logging.LogRuntimeConfig$SyslogConfig$$CMImpl",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "io.smallrye.config.ConfigMappingContext"
+          ]
+        },
+        {
+          "name": "getProperties",
+          "parameterTypes": []
+        },
+        {
+          "name": "getSecrets",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.test.common.http.TestHTTPConfigSourceInterceptor"
+    },
+    {
+      "type": "io.quarkus.test.common.http.TestHTTPConfigSourceProvider"
+    },
+    {
+      "type": "io.quarkus.test.config.ConfigLauncherSession"
+    },
+    {
+      "type": "io.quarkus.test.config.LoggingSetupExtension"
+    },
+    {
+      "type": "io.quarkus.test.config.QuarkusClassOrderer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.quarkus.test.config.TestConfigCustomizer"
+    },
+    {
+      "type": "io.quarkus.test.junit.launcher.CustomLauncherInterceptor"
+    },
+    {
+      "type": "io.quarkus.test.junit.launcher.ExecutionListener"
+    },
+    {
+      "type": "io.quarkus.test.junit.util.QuarkusTestProfileAwareClassOrderer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "io.smallrye.config.PropertiesLocationConfigSourceFactory"
+    },
+    {
+      "type": "io.smallrye.config.SmallRyeConfigProviderResolver"
+    },
+    {
+      "type": "io.smallrye.config._private.ConfigLogging_$logger",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.jboss.logging.Logger"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "io.smallrye.config._private.ConfigLogging_$logger_en"
+    },
+    {
+      "type": "io.smallrye.config._private.ConfigLogging_$logger_en_NL"
+    },
+    {
+      "type": "java.lang.Boolean",
+      "jniAccessible": true,
+      "methods": [
+        {
+          "name": "getBoolean",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "java.lang.Class",
+      "methods": [
+        {
+          "name": "isRecord",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "java.lang.ClassLoader",
+      "fields": [
+        {
+          "name": "classLoaderValueMap"
+        }
+      ]
+    },
+    {
+      "type": "java.util.function.Consumer"
+    },
+    {
+      "type": "java.util.logging.Level",
+      "methods": [
+        {
+          "name": "parse",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "jdk.internal.jrtfs.JrtFileSystemProvider"
+    },
+    {
+      "type": "jdk.internal.misc.Unsafe"
+    },
+    {
+      "type": "kotlin.Metadata"
+    },
+    {
+      "type": "nl.theexperts.sbom.parser.SbomParserTest",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "when_sbom_then_return_standardbom",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apache.log4j.LogManager"
+    },
+    {
+      "type": "org.apache.logging.log4j.Logger"
+    },
+    {
+      "type": "org.apache.maven.surefire.booter.spi.LegacyMasterProcessChannelProcessorFactory"
+    },
+    {
+      "type": "org.apache.maven.surefire.booter.spi.SurefireMasterProcessChannelProcessorFactory"
+    },
+    {
+      "type": "org.apache.maven.surefire.junitplatform.JUnitPlatformProvider",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.apache.maven.surefire.api.provider.ProviderParameters"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.apiguardian.api.API"
+    },
+    {
+      "type": "org.cyclonedx.model.Annotation"
+    },
+    {
+      "type": "org.cyclonedx.model.Annotator"
+    },
+    {
+      "type": "org.cyclonedx.model.Attribute"
+    },
+    {
+      "type": "org.cyclonedx.model.Bom",
+      "fields": [
+        {
+          "name": "bomFormat"
+        },
+        {
+          "name": "specVersion"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setComponents",
+          "parameterTypes": [
+            "java.util.List"
+          ]
+        },
+        {
+          "name": "setDependencies",
+          "parameterTypes": [
+            "java.util.List"
+          ]
+        },
+        {
+          "name": "setMetadata",
+          "parameterTypes": [
+            "org.cyclonedx.model.Metadata"
+          ]
+        },
+        {
+          "name": "setSerialNumber",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setVersion",
+          "parameterTypes": [
+            "int"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.model.BomReference",
+      "fields": [
+        {
+          "name": "ref"
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.model.Commit"
+    },
+    {
+      "type": "org.cyclonedx.model.Component",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setAuthor",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setBomRef",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setDescription",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setExternalReferences",
+          "parameterTypes": [
+            "java.util.List"
+          ]
+        },
+        {
+          "name": "setGroup",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setHashes",
+          "parameterTypes": [
+            "java.util.List"
+          ]
+        },
+        {
+          "name": "setLicenses",
+          "parameterTypes": [
+            "org.cyclonedx.model.LicenseChoice"
+          ]
+        },
+        {
+          "name": "setName",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setPublisher",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setPurl",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setScope",
+          "parameterTypes": [
+            "org.cyclonedx.model.Component$Scope"
+          ]
+        },
+        {
+          "name": "setType",
+          "parameterTypes": [
+            "org.cyclonedx.model.Component$Type"
+          ]
+        },
+        {
+          "name": "setVersion",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.model.Component$Scope"
+    },
+    {
+      "type": "org.cyclonedx.model.Component$Type"
+    },
+    {
+      "type": "org.cyclonedx.model.Composition"
+    },
+    {
+      "type": "org.cyclonedx.model.Composition$Aggregate"
+    },
+    {
+      "type": "org.cyclonedx.model.Copyright"
+    },
+    {
+      "type": "org.cyclonedx.model.Dependency",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setDependencies",
+          "parameterTypes": [
+            "java.util.List"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.model.Dependency[]"
+    },
+    {
+      "type": "org.cyclonedx.model.Diff"
+    },
+    {
+      "type": "org.cyclonedx.model.Evidence"
+    },
+    {
+      "type": "org.cyclonedx.model.ExtensibleElement",
+      "methods": [
+        {
+          "name": "add",
+          "parameterTypes": [
+            "java.lang.String",
+            "org.cyclonedx.model.Extension"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.model.ExtensibleType"
+    },
+    {
+      "type": "org.cyclonedx.model.Extension"
+    },
+    {
+      "type": "org.cyclonedx.model.Extension$ExtensionType"
+    },
+    {
+      "type": "org.cyclonedx.model.ExternalReference"
+    },
+    {
+      "type": "org.cyclonedx.model.ExternalReference$Type"
+    },
+    {
+      "type": "org.cyclonedx.model.Hash"
+    },
+    {
+      "type": "org.cyclonedx.model.IdentifiableActionType"
+    },
+    {
+      "type": "org.cyclonedx.model.Issue"
+    },
+    {
+      "type": "org.cyclonedx.model.Issue$Type"
+    },
+    {
+      "type": "org.cyclonedx.model.License",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "setId",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        },
+        {
+          "name": "setUrl",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.model.Licensing"
+    },
+    {
+      "type": "org.cyclonedx.model.OrganizationalContact"
+    },
+    {
+      "type": "org.cyclonedx.model.Patch"
+    },
+    {
+      "type": "org.cyclonedx.model.Patch$Type"
+    },
+    {
+      "type": "org.cyclonedx.model.Pedigree"
+    },
+    {
+      "type": "org.cyclonedx.model.ReleaseNotes"
+    },
+    {
+      "type": "org.cyclonedx.model.Service"
+    },
+    {
+      "type": "org.cyclonedx.model.ServiceData"
+    },
+    {
+      "type": "org.cyclonedx.model.ServiceData$Flow"
+    },
+    {
+      "type": "org.cyclonedx.model.Signature"
+    },
+    {
+      "type": "org.cyclonedx.model.Signature$Algorithm"
+    },
+    {
+      "type": "org.cyclonedx.model.Signature$PublicKey"
+    },
+    {
+      "type": "org.cyclonedx.model.Signature$PublicKey$Crv"
+    },
+    {
+      "type": "org.cyclonedx.model.Signature$PublicKey$Kty"
+    },
+    {
+      "type": "org.cyclonedx.model.Source"
+    },
+    {
+      "type": "org.cyclonedx.model.Swid"
+    },
+    {
+      "type": "org.cyclonedx.model.attestation.Assessor"
+    },
+    {
+      "type": "org.cyclonedx.model.attestation.Attestation"
+    },
+    {
+      "type": "org.cyclonedx.model.attestation.AttestationMap"
+    },
+    {
+      "type": "org.cyclonedx.model.attestation.Claim"
+    },
+    {
+      "type": "org.cyclonedx.model.attestation.Confidence"
+    },
+    {
+      "type": "org.cyclonedx.model.attestation.Conformance"
+    },
+    {
+      "type": "org.cyclonedx.model.attestation.Declarations"
+    },
+    {
+      "type": "org.cyclonedx.model.attestation.Targets"
+    },
+    {
+      "type": "org.cyclonedx.model.attestation.affirmation.Affirmation"
+    },
+    {
+      "type": "org.cyclonedx.model.attestation.evidence.Contents"
+    },
+    {
+      "type": "org.cyclonedx.model.attestation.evidence.Data"
+    },
+    {
+      "type": "org.cyclonedx.model.attestation.evidence.Evidence"
+    },
+    {
+      "type": "org.cyclonedx.model.component.ModelCard"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.AlgorithmProperties"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.CertificateProperties"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.CipherSuite"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.CryptoProperties"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.CryptoRef"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.ProtocolProperties"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.RelatedCryptoMaterialProperties"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.SecuredBy"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.enums.AssetType"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.enums.CryptoFunction"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.enums.ExecutionEnvironment"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.enums.ImplementationPlatform"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.enums.Mode"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.enums.Padding"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.enums.Primitive"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.enums.ProtocolType"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.enums.RelatedCryptoMaterialType"
+    },
+    {
+      "type": "org.cyclonedx.model.component.crypto.enums.State"
+    },
+    {
+      "type": "org.cyclonedx.model.component.evidence.Callstack"
+    },
+    {
+      "type": "org.cyclonedx.model.component.evidence.Frame"
+    },
+    {
+      "type": "org.cyclonedx.model.component.evidence.Occurrence"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.ComponentData"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.ComponentData$ComponentDataType"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.Considerations"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.InputOutputParameter"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.ModelParameters"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.ModelParameters$Approach"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.ModelParameters$Approach$ApproachType"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.PerformanceMetric"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.PerformanceMetric$ConfidenceInterval"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.QuantitativeAnalysis"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.consideration.EnvironmentalConsideration"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.consideration.FairnessAssessment"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.consideration.consumption.Activity"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.consideration.consumption.EnergyConsumption"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.consideration.consumption.co2.CO2Measure"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.consideration.consumption.co2.Unit"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.consideration.consumption.energy.EnergyMeasure"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.consideration.consumption.energy.EnergyProvider"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.consideration.consumption.energy.EnergySource"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.consideration.consumption.energy.Unit"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.data.Content"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.data.Governance"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.data.Governance$DataGovernanceResponsibleParty"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.data.Graphics"
+    },
+    {
+      "type": "org.cyclonedx.model.component.modelCard.data.Graphics$Graphic"
+    },
+    {
+      "type": "org.cyclonedx.model.definition.Definition"
+    },
+    {
+      "type": "org.cyclonedx.model.definition.Level"
+    },
+    {
+      "type": "org.cyclonedx.model.definition.Requirement"
+    },
+    {
+      "type": "org.cyclonedx.model.definition.Standard"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.Formula"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.FormulationCommon"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.FormulationCommon$TaskType"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.Workflow"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.common.BasicDataAbstract"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.task.Command"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.task.Step"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.task.Task"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.trigger.Condition"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.trigger.Event"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.trigger.Trigger"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.workspace.Volume"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.workspace.Volume$Mode"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.workspace.Workspace"
+    },
+    {
+      "type": "org.cyclonedx.model.formulation.workspace.Workspace$AccessMode"
+    },
+    {
+      "type": "org.cyclonedx.util.ResourceReferenceChoiceDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.AttachmentTextDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.CertificationLevelDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.ComponentWrapperDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.DatasetsChoiceDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.DependencyDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.ExtensionDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.ExternalReferencesDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.HashesDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.IdentityDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.InputTypeDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.LicenseDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.LicensingTypeDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.MetadataDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.NotesDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.OrganizationalChoiceDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.OrganizationalEntityDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.OutputTypeDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.PropertiesDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.PropertyDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.ResolvesDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.RiskDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.SignatoryDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.StringListDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.TagsDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.cyclonedx.util.deserializer.VulnerabilityDeserializer",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.logmanager.CopyOnWriteMap"
+    },
+    {
+      "type": "org.jboss.logmanager.ExtHandler"
+    },
+    {
+      "type": "org.jboss.logmanager.ExtLogRecord",
+      "methods": [
+        {
+          "name": "setMarker",
+          "parameterTypes": [
+            "java.lang.Object"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.jboss.logmanager.JBossLoggerFinder"
+    },
+    {
+      "type": "org.jboss.logmanager.LogManager"
+    },
+    {
+      "type": "org.jboss.logmanager.LoggerNode"
+    },
+    {
+      "type": "org.junit.internal.AssumptionViolatedException"
+    },
+    {
+      "type": "org.junit.jupiter.api.ClassOrderer"
+    },
+    {
+      "type": "org.junit.jupiter.api.DisplayName"
+    },
+    {
+      "type": "org.junit.jupiter.api.TestTemplate"
+    },
+    {
+      "type": "org.junit.jupiter.api.condition.DisabledOnOs"
+    },
+    {
+      "type": "org.junit.jupiter.api.condition.OS"
+    },
+    {
+      "type": "org.junit.jupiter.api.extension.ExtendWith"
+    },
+    {
+      "type": "org.junit.jupiter.engine.JupiterTestEngine"
+    },
+    {
+      "type": "org.junit.jupiter.params.ParameterizedTest"
+    },
+    {
+      "type": "org.junit.jupiter.params.ParameterizedTestExtension",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.junit.jupiter.params.provider.AnnotationBasedArgumentsProvider"
+    },
+    {
+      "type": "org.junit.jupiter.params.provider.ArgumentsProvider"
+    },
+    {
+      "type": "org.junit.jupiter.params.provider.ArgumentsSource"
+    },
+    {
+      "type": "org.junit.jupiter.params.provider.ValueArgumentsProvider",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.junit.jupiter.params.provider.ValueSource"
+    },
+    {
+      "type": "org.junit.jupiter.params.support.AnnotationConsumer"
+    },
+    {
+      "type": "org.junit.platform.commons.annotation.Testable"
+    },
+    {
+      "type": "org.junit.platform.engine.CancellationToken"
+    },
+    {
+      "type": "org.junit.platform.launcher.LauncherExecutionRequest"
+    },
+    {
+      "type": "org.junit.platform.launcher.LauncherSession",
+      "methods": [
+        {
+          "name": "getLauncher",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.junit.platform.launcher.TestIdentifier",
+      "methods": [
+        {
+          "name": "getParentIdObject",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.junit.platform.launcher.TestIdentifier$SerializedForm",
+      "serializable": true
+    },
+    {
+      "type": "org.junit.platform.launcher.core.LauncherFactory",
+      "methods": [
+        {
+          "name": "openSession",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.junit.platform.launcher.listeners.UniqueIdTrackingListener"
+    },
+    {
+      "type": "org.slf4j.impl.JBossSlf4jServiceProvider"
+    },
+    {
+      "type": "sun.management.VMManagementImpl",
+      "jniAccessible": true,
+      "fields": [
+        {
+          "name": "compTimeMonitoringSupport"
+        },
+        {
+          "name": "currentThreadCpuTimeSupport"
+        },
+        {
+          "name": "objectMonitorUsageSupport"
+        },
+        {
+          "name": "otherThreadCpuTimeSupport"
+        },
+        {
+          "name": "remoteDiagnosticCommandsSupport"
+        },
+        {
+          "name": "synchronizerUsageSupport"
+        },
+        {
+          "name": "threadAllocatedMemorySupport"
+        },
+        {
+          "name": "threadContentionMonitoringSupport"
+        }
+      ]
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en"
+    },
+    {
+      "type": "sun.text.resources.cldr.FormatData_en_US"
+    },
+    {
+      "type": "sun.util.resources.cldr.CalendarData"
+    }
+  ],
+  "resources": [
+    {
+      "glob": "META-INF/microprofile-config.properties"
+    },
+    {
+      "glob": "META-INF/services/io.quarkus.test.common.FacadeClassLoaderProvider"
+    },
+    {
+      "glob": "META-INF/services/io.smallrye.config.ConfigSourceFactory"
+    },
+    {
+      "glob": "META-INF/services/io.smallrye.config.ConfigSourceInterceptor"
+    },
+    {
+      "glob": "META-INF/services/io.smallrye.config.ConfigSourceInterceptorFactory"
+    },
+    {
+      "glob": "META-INF/services/io.smallrye.config.SecretKeysHandler"
+    },
+    {
+      "glob": "META-INF/services/io.smallrye.config.SecretKeysHandlerFactory"
+    },
+    {
+      "glob": "META-INF/services/io.smallrye.config.SmallRyeConfigBuilderCustomizer"
+    },
+    {
+      "glob": "META-INF/services/java.nio.file.spi.FileSystemProvider"
+    },
+    {
+      "glob": "META-INF/services/java.time.zone.ZoneRulesProvider"
+    },
+    {
+      "glob": "META-INF/services/javax.xml.parsers.DocumentBuilderFactory"
+    },
+    {
+      "glob": "META-INF/services/javax.xml.stream.XMLInputFactory"
+    },
+    {
+      "glob": "META-INF/services/javax.xml.stream.XMLOutputFactory"
+    },
+    {
+      "glob": "META-INF/services/org.apache.maven.surefire.spi.MasterProcessChannelProcessorFactory"
+    },
+    {
+      "glob": "META-INF/services/org.assertj.core.configuration.Configuration"
+    },
+    {
+      "glob": "META-INF/services/org.assertj.core.presentation.Representation"
+    },
+    {
+      "glob": "META-INF/services/org.eclipse.microprofile.config.spi.ConfigProviderResolver"
+    },
+    {
+      "glob": "META-INF/services/org.eclipse.microprofile.config.spi.ConfigSource"
+    },
+    {
+      "glob": "META-INF/services/org.eclipse.microprofile.config.spi.ConfigSourceProvider"
+    },
+    {
+      "glob": "META-INF/services/org.eclipse.microprofile.config.spi.Converter"
+    },
+    {
+      "glob": "META-INF/services/org.jboss.logging.LoggerProvider"
+    },
+    {
+      "glob": "META-INF/services/org.jboss.logmanager.LogContextInitializer"
+    },
+    {
+      "glob": "META-INF/services/org.junit.jupiter.api.extension.Extension"
+    },
+    {
+      "glob": "META-INF/services/org.junit.platform.commons.support.scanning.ClasspathScanner"
+    },
+    {
+      "glob": "META-INF/services/org.junit.platform.engine.TestEngine"
+    },
+    {
+      "glob": "META-INF/services/org.junit.platform.launcher.LauncherDiscoveryListener"
+    },
+    {
+      "glob": "META-INF/services/org.junit.platform.launcher.LauncherSessionListener"
+    },
+    {
+      "glob": "META-INF/services/org.junit.platform.launcher.PostDiscoveryFilter"
+    },
+    {
+      "glob": "META-INF/services/org.junit.platform.launcher.TestExecutionListener"
+    },
+    {
+      "glob": "META-INF/services/org.slf4j.spi.SLF4JServiceProvider"
+    },
+    {
+      "glob": "application-test.properties"
+    },
+    {
+      "glob": "application.properties"
+    },
+    {
+      "glob": "cyclonedx-maven-plugin-bom.xml"
+    },
+    {
+      "glob": "junit-platform.properties"
+    },
+    {
+      "glob": "syft-bom.json"
+    }
+  ]
+}
