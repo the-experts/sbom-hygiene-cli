@@ -32,11 +32,22 @@ public class RunCommand implements Runnable {
     Path outputPath;
 
     @Option(
-            names = "--rules",
-            description = "Path to custom ruleset json",
-            defaultValue = "./dependency-validator/src/main/resources/license-rules.json",
+            names = "--failure-rules",
+            description = "Path to custom failure ruleset json",
             converter = ExpandPathConverter.class)
-    Path rulesJson;
+    Path failureRulesJson;
+
+    @Option(
+            names = "--license-rules",
+            description = "Path to custom license ruleset json",
+            converter = ExpandPathConverter.class)
+    Path licenseRulesJson;
+
+    @Option(
+            names = "--validation-rules",
+            description = "Path to custom validation ruleset json",
+            converter = ExpandPathConverter.class)
+    Path validationRulesJson;
 
     @Option(
             names = "--credentials-file",
@@ -71,8 +82,9 @@ public class RunCommand implements Runnable {
             return;
         }
 
-        System.out.println("Running sbom " + sbomPath + " with json " + rulesJson + " to output " + outputPath);
-        dependencyAnalysisService.analyzeDependencyHygiene(sbomPath, outputPath, rulesJson, credentialsPath);
+        System.out.println("Running sbom " + sbomPath + " with json " + " to output " + outputPath);
+        dependencyAnalysisService.analyzeDependencyHygiene(sbomPath, outputPath, failureRulesJson, licenseRulesJson, validationRulesJson, credentialsPath);
+
     }
 
 }
