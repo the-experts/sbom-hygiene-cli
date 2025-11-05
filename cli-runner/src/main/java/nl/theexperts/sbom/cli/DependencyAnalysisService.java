@@ -62,7 +62,7 @@ public class DependencyAnalysisService {
                             s.lastReleaseDateTime()
                     );
 
-                    String licenseId = component.getLicenses().toString();
+                    String licenseId = component.getLicenses().getLicenses().toString();
 
                     java.net.URL repoUrl = URI.create(component.getRepoUrl()).toURL();
                     Dependency dependency = new Dependency(repoUrl, depScore, licenseId);
