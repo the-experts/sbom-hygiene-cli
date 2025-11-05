@@ -1,4 +1,4 @@
-package nl.theexperts.sbom.collector;
+package nl.theexperts.sbom.api;
 
 import java.net.URL;
 import java.time.LocalDateTime;

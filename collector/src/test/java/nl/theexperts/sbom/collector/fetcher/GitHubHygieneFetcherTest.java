@@ -1,11 +1,13 @@
 package nl.theexperts.sbom.collector.fetcher;
 
-
-import nl.theexperts.sbom.collector.SourceCodeRepositoryHygiene;
+import io.quarkiverse.mockserver.test.InjectMockServerClient;
+import io.quarkiverse.mockserver.test.MockServerTestResource;
+import io.quarkus.test.common.QuarkusTestResource;
+import io.quarkus.test.junit.QuarkusTest;
+import nl.theexperts.sbom.api.SourceCodeRepositoryHygiene;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockserver.integration.ClientAndServer;
-import org.mockserver.junit.jupiter.MockServerExtension;
+import org.mockserver.client.MockServerClient;
 
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -16,16 +18,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
 
-@ExtendWith(MockServerExtension.class)
+@QuarkusTest
+@QuarkusTestResource(MockServerTestResource.class)
 class GitHubHygieneFetcherTest {
 
-    private final ClientAndServer client;
-    private final GitHubHygieneFetcher fetcher;
+    private static final String GITHUB_TOKEN = "abc";
+    private GitHubHygieneFetcher fetcher;
 
-    public GitHubHygieneFetcherTest(ClientAndServer client) {
-        this.client = client;
-        var port = client.remoteAddress().getPort();
-        fetcher = new GitHubHygieneFetcher("http://localhost:" + port);
+    @InjectMockServerClient
+    MockServerClient client;
+
+    @BeforeEach
+    void setUp() {
+        var port = client.getPort();
+        fetcher = new GitHubHygieneFetcher("http://localhost:" + port, GITHUB_TOKEN.toCharArray());
     }
 
     @Test
@@ -34,6 +40,7 @@ class GitHubHygieneFetcherTest {
         var repo = "sbom-hygiene-cli";
         client.when(request()
                         .withMethod("GET")
+                        .withHeader("Authorization", "token " + GITHUB_TOKEN)
                         .withPath("/repos/" + organisation + "/" + repo))
                 .respond(response()
                         .withStatusCode(200)
@@ -42,6 +49,7 @@ class GitHubHygieneFetcherTest {
                 );
         client.when(request()
                         .withMethod("GET")
+                        .withHeader("Authorization", "token " + GITHUB_TOKEN)
                         .withPath("/repos/" + organisation + "/" + repo + "/releases"))
                 .respond(response()
                         .withStatusCode(200)
@@ -50,6 +58,7 @@ class GitHubHygieneFetcherTest {
                 );
         client.when(request()
                         .withMethod("GET")
+                        .withHeader("Authorization", "token " + GITHUB_TOKEN)
                         .withPath("/repos/" + organisation + "/" + repo + "/contributors"))
                 .respond(response()
                         .withStatusCode(200)
@@ -58,6 +67,7 @@ class GitHubHygieneFetcherTest {
                 );
         client.when(request()
                         .withMethod("GET")
+                        .withHeader("Authorization", "token " + GITHUB_TOKEN)
                         .withPath("/repos/" + organisation + "/" + repo + "/releases/latest"))
                 .respond(response()
                         .withStatusCode(200)
@@ -75,8 +85,7 @@ class GitHubHygieneFetcherTest {
                 3,
                 null,
                 LocalDateTime.of(2025, 11, 4, 12, 17, 22)
-        )
-        ));
+        )));
     }
 
 }

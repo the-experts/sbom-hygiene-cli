@@ -1,25 +1,26 @@
 package nl.theexperts.sbom.collector;
 
-import nl.theexperts.sbom.collector.fetcher.GitHubHygieneFetcher;
-import nl.theexperts.sbom.collector.fetcher.SourceCodeRepositoryHygieneFetcher;
+import jakarta.enterprise.context.ApplicationScoped;
+import nl.theexperts.sbom.api.SourceCodeRepositoryHygiene;
+import nl.theexperts.sbom.api.VcsType;
 
 import java.net.URL;
 
+@ApplicationScoped
 public class DependencyHygieneCollector {
 
-    public SourceCodeRepositoryHygiene collect(URL uri) {
-        var fetcher = selectFetcher(VcsType.find(uri.getHost()));
-        if (fetcher == null) {
-            throw new VcsTypeNotSupportedException(VcsType.OTHER, uri.toString());
-        }
-        return fetcher.fetch(uri);
+    private final FetcherSelector fetcherSelector;
+
+    public DependencyHygieneCollector(final FetcherSelector fetcherSelector) {
+        this.fetcherSelector = fetcherSelector;
     }
 
-    private SourceCodeRepositoryHygieneFetcher selectFetcher(VcsType type) {
-        return switch (type) {
-            case GITHUB -> new GitHubHygieneFetcher("https://api.github.com");
-            default -> null;
-        };
+    public SourceCodeRepositoryHygiene collect(URL url, char[] token) {
+        var fetcher = fetcherSelector.selectFetcher(VcsType.find(url.getHost()), token);
+        if (fetcher == null) {
+            throw new VcsTypeNotSupportedException(VcsType.OTHER, url.toString());
+        }
+        return fetcher.fetch(url);
     }
 
 }

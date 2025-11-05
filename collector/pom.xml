@@ -12,21 +12,26 @@
     </parent>
 
     <properties>
-        <github-api.version>1.330</github-api.version>
         <mockserver.version>5.15.0</mockserver.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.kohsuke</groupId>
-            <artifactId>github-api</artifactId>
-            <version>${github-api.version}</version>
+            <groupId>nl.the-experts.sbom-hygiene</groupId>
+            <artifactId>api</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.mock-server</groupId>
-            <artifactId>mockserver-junit-jupiter</artifactId>
-            <version>${mockserver.version}</version>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-rest-client-jackson</artifactId>
+        </dependency>
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>io.quarkiverse.mockserver</groupId>
+            <artifactId>quarkus-mockserver-test</artifactId>
+            <version>1.15.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
